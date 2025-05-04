@@ -88,7 +88,7 @@ export default function ContactPage() {
                       <input
                         type="text"
                         id="name"
-                        className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm ${
+                        className={`p-2 mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm ${
                           errors.name ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                         }`}
                         {...register("name", {
@@ -107,7 +107,7 @@ export default function ContactPage() {
                       <input
                         type="email"
                         id="email"
-                        className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm ${
+                        className={`p-2 mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm ${
                           errors.email ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                         }`}
                         {...register("email", {
@@ -130,7 +130,7 @@ export default function ContactPage() {
                       <input
                         type="text"
                         id="company"
-                        className="mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white sm:text-sm"
+                        className="p-2 mt-1 block w-full rounded-md border-gray-300 dark:border-gray-600 shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:text-white sm:text-sm"
                         {...register("company")}
                       />
                     </div>
@@ -142,7 +142,7 @@ export default function ContactPage() {
                       <input
                         type="text"
                         id="subject"
-                        className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm ${
+                        className={`p-2 mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm ${
                           errors.subject ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                         }`}
                         {...register("subject", {
@@ -162,7 +162,7 @@ export default function ContactPage() {
                     <textarea
                       id="message"
                       rows={6}
-                      className={`mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm ${
+                      className={`p-2 mt-1 block w-full rounded-md shadow-sm focus:border-blue-500 focus:ring-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white sm:text-sm ${
                         errors.message ? "border-red-500" : "border-gray-300 dark:border-gray-600"
                       }`}
                       {...register("message", {
