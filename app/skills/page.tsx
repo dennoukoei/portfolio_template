@@ -115,7 +115,7 @@ const topSkills = skillCategories
   .slice(0, 10);
 
 // 色生成（カテゴリー名に基づいて一貫した色を生成）
-function getRandomColor(seed) {
+function getRandomColor(seed: string) {
   let hash = 0;
   for (let i = 0; i < seed.length; i++) {
     hash = seed.charCodeAt(i) + ((hash << 5) - hash);
@@ -147,7 +147,7 @@ const item = {
 
 export default function SkillsPage() {
   const [activeCategory, setActiveCategory] = useState(skillCategories[0].name);
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [hoveredSkill, setHoveredSkill] = useState<string | null>(null);
 
   return (
     <div className="bg-gray-50 min-h-screen py-16">
