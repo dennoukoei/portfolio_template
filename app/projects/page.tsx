@@ -80,40 +80,40 @@ const projects = [
 
 export default function ProjectsPage() {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen py-16">
+    <div className="bg-gray-50 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white">プロジェクト</h1>
-          <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+          <h1 className="text-4xl font-bold text-gray-900">プロジェクト</h1>
+          <p className="mt-4 text-xl text-gray-600">
             これまでに手がけたプロジェクトの一部をご紹介します。各プロジェクトでは、現代的な技術スタックと設計原則を適用し、最適なユーザー体験の提供を目指しました。
           </p>
         </div>
 
         <div className="mt-12">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">厳選プロジェクト</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">厳選プロジェクト</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.filter(p => p.featured).map((project) => (
               <div
                 key={project.id}
-                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
               >
-                <div className="h-48 w-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <div className="h-48 w-full bg-gray-200 flex items-center justify-center">
                   <span className="text-4xl">🖼️</span> {/* 画像プレースホルダー */}
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{project.title}</h3>
-                  <p className="mt-2 text-gray-600 dark:text-gray-300 line-clamp-3">{project.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900">{project.title}</h3>
+                  <p className="mt-2 text-gray-600 line-clamp-3">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.techStack.slice(0, 4).map((tech, index) => (
                       <span
                         key={index}
-                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
+                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.techStack.length > 4 && (
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                         + {project.techStack.length - 4}
                       </span>
                     )}
@@ -123,7 +123,7 @@ export default function ProjectsPage() {
                   <div className="mt-6 flex items-center space-x-4">
                     <Link
                       href={`/projects/${project.id}`}
-                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                     >
                       詳細を見る <FiArrowRight className="ml-2" />
                     </Link>
@@ -137,7 +137,7 @@ export default function ProjectsPage() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                          className="text-gray-600 hover:text-gray-900"
                           aria-label="GitHub"
                         >
                           <FiGithub size={20} />
@@ -148,7 +148,7 @@ export default function ProjectsPage() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                          className="text-gray-600 hover:text-gray-900"
                           aria-label="Live Demo"
                         >
                           <FiExternalLink size={20} />
@@ -163,30 +163,30 @@ export default function ProjectsPage() {
         </div>
 
         <div className="mt-16">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-8">その他のプロジェクト</h2>
+          <h2 className="text-2xl font-bold text-gray-900 mb-8">その他のプロジェクト</h2>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.filter(p => !p.featured).map((project) => (
               <div
                 key={project.id}
-                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
+                className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition"
               >
-                <div className="h-48 w-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <div className="h-48 w-full bg-gray-200 flex items-center justify-center">
                   <span className="text-4xl">🖼️</span> {/* 画像プレースホルダー */}
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white">{project.title}</h3>
-                  <p className="mt-2 text-gray-600 dark:text-gray-300 line-clamp-3">{project.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900">{project.title}</h3>
+                  <p className="mt-2 text-gray-600 line-clamp-3">{project.description}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {project.techStack.slice(0, 4).map((tech, index) => (
                       <span
                         key={index}
-                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
+                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
                       >
                         {tech}
                       </span>
                     ))}
                     {project.techStack.length > 4 && (
-                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200">
+                      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">
                         + {project.techStack.length - 4}
                       </span>
                     )}
@@ -196,7 +196,7 @@ export default function ProjectsPage() {
                   <div className="mt-6 flex items-center space-x-4">
                     <Link
                       href={`/projects/${project.id}`}
-                      className="inline-flex items-center text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300 font-medium"
+                      className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium"
                     >
                       詳細を見る <FiArrowRight className="ml-2" />
                     </Link>
@@ -210,7 +210,7 @@ export default function ProjectsPage() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                          className="text-gray-600 hover:text-gray-900"
                           aria-label="GitHub"
                         >
                           <FiGithub size={20} />
@@ -221,7 +221,7 @@ export default function ProjectsPage() {
                           href={link.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white"
+                          className="text-gray-600 hover:text-gray-900"
                           aria-label="Live Demo"
                         >
                           <FiExternalLink size={20} />

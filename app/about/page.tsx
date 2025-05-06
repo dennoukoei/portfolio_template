@@ -77,24 +77,24 @@ const certifications = [
 
 export default function AboutPage() {
   return (
-    <div className="bg-gray-50 dark:bg-gray-900 min-h-screen py-16">
+    <div className="bg-gray-50 min-h-screen py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white">経歴</h1>
-            <p className="mt-4 text-xl text-gray-600 dark:text-gray-300">
+            <h1 className="text-4xl font-bold text-gray-900">経歴</h1>
+            <p className="mt-4 text-xl text-gray-600">
               私のこれまでの経歴、職歴、学歴などをご紹介します。
             </p>
           </div>
 
           {/* プロフィール概要 */}
-          <div className="mt-12 bg-white dark:bg-gray-800 shadow-md rounded-xl overflow-hidden">
+          <div className="mt-12 bg-white shadow-md rounded-xl overflow-hidden">
             <div className="md:flex">
               <div className="p-8 md:p-10 md:flex-1">
-                <h2 className="text-2xl font-bold text-gray-900 dark:text-white">unknown</h2>
-                <p className="mt-1 text-lg text-blue-600 dark:text-blue-400">フルスタックエンジニア / Web開発者</p>
+                <h2 className="text-2xl font-bold text-gray-900">unknown</h2>
+                <p className="mt-1 text-lg text-blue-600">フルスタックエンジニア / Web開発者</p>
                 
-                <p className="mt-4 text-gray-700 dark:text-gray-300">
+                <p className="mt-4 text-gray-700">
                   7年以上のWeb開発経験を持ち、フロントエンドからバックエンドまで幅広い技術スタックを活用したアプリケーション開発に携わってきました。
                   ユーザー中心の設計思想と技術的な最適化の両立を重視し、品質の高いソリューション提供を心がけています。
                   チーム開発でのリーダーシップ経験も豊富で、アジャイル開発手法を用いたプロジェクト管理も得意としています。
@@ -103,7 +103,7 @@ export default function AboutPage() {
                 <div className="mt-6">
                   <Link 
                     href="#"
-                    className="inline-flex items-center px-6 py-3 border border-blue-600 dark:border-blue-500 rounded-md text-blue-600 dark:text-blue-400 font-medium hover:bg-blue-50 dark:hover:bg-blue-900/30 transition"
+                    className="inline-flex items-center px-6 py-3 border border-blue-600 rounded-md text-blue-600 font-medium hover:bg-blue-50 transition"
                   >
                     <FiDownload className="mr-2" />
                     履歴書をダウンロード
@@ -111,8 +111,8 @@ export default function AboutPage() {
                 </div>
               </div>
               
-              <div className="bg-gray-100 dark:bg-gray-700 md:w-1/3 flex items-center justify-center p-8">
-                <div className="w-40 h-40 bg-gray-300 dark:bg-gray-600 rounded-full flex items-center justify-center text-6xl">
+              <div className="bg-gray-100 md:w-1/3 flex items-center justify-center p-8">
+                <div className="w-40 h-40 bg-gray-300 rounded-full flex items-center justify-center text-6xl">
                   👨‍💻
                 </div>
               </div>
@@ -121,23 +121,23 @@ export default function AboutPage() {
 
           {/* 職歴 */}
           <div className="mt-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">職歴</h2>
+            <h2 className="text-3xl font-bold text-gray-900">職歴</h2>
             
             <div className="mt-8 space-y-12">
               {workExperiences.map((exp, index) => (
-                <div key={index} className="border-l-4 border-blue-600 dark:border-blue-500 pl-4 transition-all hover:pl-6">
+                <div key={index} className="border-l-4 border-blue-600 pl-4 transition-all hover:pl-6">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{exp.position}</h3>
-                    <span className="text-sm font-medium text-blue-600 dark:text-blue-400">{exp.period}</span>
+                    <h3 className="text-xl font-bold text-gray-900">{exp.position}</h3>
+                    <span className="text-sm font-medium text-blue-600">{exp.period}</span>
                   </div>
-                  <p className="mt-1 text-lg text-gray-900 dark:text-white">{exp.company}</p>
-                  <p className="mt-3 text-gray-700 dark:text-gray-300">{exp.description}</p>
+                  <p className="mt-1 text-lg text-gray-900">{exp.company}</p>
+                  <p className="mt-3 text-gray-700">{exp.description}</p>
                   
                   <div className="mt-4 flex flex-wrap gap-2">
                     {exp.technologies.map((tech) => (
                       <span
                         key={tech}
-                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200"
+                        className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800"
                       >
                         {tech}
                       </span>
@@ -150,17 +150,17 @@ export default function AboutPage() {
 
           {/* 学歴 */}
           <div className="mt-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">学歴</h2>
+            <h2 className="text-3xl font-bold text-gray-900">学歴</h2>
             
             <div className="mt-8 space-y-10">
               {education.map((edu, index) => (
-                <div key={index} className="border-l-4 border-gray-300 dark:border-gray-700 pl-4 transition-all hover:pl-6">
+                <div key={index} className="border-l-4 border-gray-300 pl-4 transition-all hover:pl-6">
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{edu.degree}</h3>
-                    <span className="text-sm font-medium text-gray-600 dark:text-gray-400">{edu.period}</span>
+                    <h3 className="text-xl font-bold text-gray-900">{edu.degree}</h3>
+                    <span className="text-sm font-medium text-gray-600">{edu.period}</span>
                   </div>
-                  <p className="mt-1 text-lg text-gray-900 dark:text-white">{edu.institution}</p>
-                  <p className="mt-3 text-gray-700 dark:text-gray-300">{edu.description}</p>
+                  <p className="mt-1 text-lg text-gray-900">{edu.institution}</p>
+                  <p className="mt-3 text-gray-700">{edu.description}</p>
                 </div>
               ))}
             </div>
@@ -168,28 +168,28 @@ export default function AboutPage() {
 
           {/* 資格・認定 */}
           <div className="mt-16">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">資格・認定</h2>
+            <h2 className="text-3xl font-bold text-gray-900">資格・認定</h2>
             
             <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {certifications.map((cert, index) => (
-                <div key={index} className="bg-white dark:bg-gray-800 shadow-sm rounded-md p-4 hover:shadow-md transition">
-                  <h3 className="font-medium text-gray-900 dark:text-white">{cert.name}</h3>
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">{cert.issuer} · {cert.year}</p>
+                <div key={index} className="bg-white shadow-sm rounded-md p-4 hover:shadow-md transition">
+                  <h3 className="font-medium text-gray-900">{cert.name}</h3>
+                  <p className="mt-1 text-sm text-gray-600">{cert.issuer} · {cert.year}</p>
                 </div>
               ))}
             </div>
           </div>
 
           {/* CTA */}
-          <div className="mt-16 bg-blue-50 dark:bg-blue-900/30 rounded-xl p-8 shadow-sm text-center">
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white">一緒に働きませんか？</h2>
-            <p className="mt-3 text-gray-700 dark:text-gray-300">
+          <div className="mt-16 bg-blue-50 rounded-xl p-8 shadow-sm text-center">
+            <h2 className="text-2xl font-bold text-gray-900">一緒に働きませんか？</h2>
+            <p className="mt-3 text-gray-700">
               現在、新しい挑戦やプロジェクトへの参加に興味があります。
               お仕事のご相談やプロジェクトの詳細など、お気軽にご連絡ください。
             </p>
             <Link
               href="/contact"
-              className="mt-6 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-600 transition"
+              className="mt-6 inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition"
             >
               お問い合わせ <FiArrowRight className="ml-2" />
             </Link>
