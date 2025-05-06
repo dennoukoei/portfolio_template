@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <!-- ダークなベース背景 -->
+  <rect width="32" height="32" rx="4" fill="#1E293B" />
+  
+  <!-- ターミナル風インターフェース表現 -->
+  <rect x="3" y="3" width="26" height="26" rx="2" fill="#0F172A" stroke="#64748B" stroke-width="0.5" />
+  
+  <!-- ターミナルの上部バー -->
+  <rect x="3" y="3" width="26" height="4" rx="1" fill="#334155" />
+  
+  <!-- ターミナルコントロールボタン -->
+  <circle cx="5.5" cy="5" r="1" fill="#EF4444" />
+  <circle cx="9" cy="5" r="1" fill="#F59E0B" />
+  <circle cx="12.5" cy="5" r="1" fill="#10B981" />
+  
+  <!-- コードのレンダリング -->
+  <g fill="#F8FAFC" font-family="monospace" font-size="4.5">
+    <!-- コマンドプロンプト -->
+    <text x="5" y="12" fill="#22C55E">$</text>
+    <!-- コード表現 -->
+    <text x="7.5" y="12" fill="#38BDF8">code</text>
+    <text x="7.5" y="17" fill="#F472B6">{</text>
+    <text x="6" y="22" fill="#A78BFA">fn();</text>
+    <text x="7.5" y="27" fill="#F472B6">}</text>
+  </g>
+  
+  <!-- ブリンキングカーソル -->
+  <rect x="16.5" y="25.5" width="1" height="5" fill="#F8FAFC">
+    <animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite" />
+  </rect>
+</svg>

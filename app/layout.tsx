@@ -17,6 +17,10 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "unknown | フルスタックエンジニア",
   description: "unknownのポートフォリオサイト - フルスタックエンジニア、ウェブ開発者",
+  icons: {
+    icon: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
 };
 
 export default function RootLayout({
