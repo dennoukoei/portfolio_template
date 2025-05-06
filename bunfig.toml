@@ -1,0 +1,7 @@
+[test]
+# DOM環境を使用
+jsx = "dom"
+# ファイル検索のパターンを設定
+match = ["**/*.test.ts", "**/*.test.tsx", "**/*.spec.ts", "**/*.spec.tsx"]
+# テストファイルを無視するパターン
+ignore = ["node_modules/**/*"]

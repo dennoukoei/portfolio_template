@@ -1,0 +1,28 @@
+name: テスト自動実行
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  # 手動実行用
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: リポジトリをチェックアウト
+        uses: actions/checkout@v4
+      
+      - name: Bunセットアップ
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+      
+      - name: 依存関係インストール
+        run: bun install --frozen-lockfile
+      
+      - name: テスト実行
+        run: bun test
