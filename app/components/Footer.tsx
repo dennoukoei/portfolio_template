@@ -15,7 +15,7 @@ export default function Footer() {
               href="https://github.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 transition"
+              className="text-gray-700 hover:text-gray-900 transition"
               aria-label="GitHub"
             >
               <FiGithub size={20} />
@@ -24,7 +24,7 @@ export default function Footer() {
               href="https://linkedin.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 transition"
+              className="text-gray-700 hover:text-gray-900 transition"
               aria-label="LinkedIn"
             >
               <FiLinkedin size={20} />
@@ -33,7 +33,7 @@ export default function Footer() {
               href="https://twitter.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-gray-600 hover:text-gray-900 transition"
+              className="text-gray-700 hover:text-gray-900 transition"
               aria-label="Twitter"
             >
               <FiTwitter size={20} />
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
           
           <div className="mt-8 md:mt-0 text-center md:text-right">
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-700">
               &copy; {currentYear} unknown. All rights reserved.
             </p>
           </div>
