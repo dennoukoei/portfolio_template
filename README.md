@@ -26,6 +26,163 @@
 - **自己紹介**: 経歴と人柄を伝える自己紹介
 - **コンタクト**: お問い合わせフォームとソーシャルリンク
 
+## ⚠️ モック機能について
+
+このテンプレートには**実装されていないモック機能**があります：
+
+- **お問い合わせフォーム**: 現在の実装では、フォーム送信時にコンソールにデータを出力するのみで、実際のメール送信やデータ保存は行いません。
+
+### コンタクトフォームの実用化方法
+
+お問い合わせフォームを実際に機能させるには、以下のいずれかの方法を実装する必要があります：
+
+#### 1. Next.js APIルートを使用する方法（推奨）
+
+```typescript
+// app/api/contact/route.ts を作成
+
+import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
+
+export async function POST(request: Request) {
+  const data = await request.json();
+  
+  // トランスポーター設定
+  const transporter = nodemailer.createTransport({
+    host: process.env.EMAIL_HOST,
+    port: Number(process.env.EMAIL_PORT),
+    secure: true,
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASSWORD,
+    },
+  });
+  
+  try {
+    // メール送信
+    await transporter.sendMail({
+      from: process.env.EMAIL_FROM,
+      to: process.env.EMAIL_TO,
+      subject: `お問い合わせ: ${data.subject}`,
+      text: `
+        名前: ${data.name}
+        メール: ${data.email}
+        会社名: ${data.company || 'なし'}
+        件名: ${data.subject}
+        メッセージ:
+        ${data.message}
+      `,
+      html: `
+        <h2>新しいお問い合わせ</h2>
+        <p><strong>名前:</strong> ${data.name}</p>
+        <p><strong>メール:</strong> ${data.email}</p>
+        <p><strong>会社名:</strong> ${data.company || 'なし'}</p>
+        <p><strong>件名:</strong> ${data.subject}</p>
+        <p><strong>メッセージ:</strong></p>
+        <p>${data.message.replace(/\n/g, '<br>')}</p>
+      `,
+    });
+    
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error('メール送信エラー:', error);
+    return NextResponse.json(
+      { error: 'メール送信に失敗しました' },
+      { status: 500 }
+    );
+  }
+}
+```
+
+`.env.local`に以下の環境変数を設定：
+
+```
+EMAIL_HOST=smtp.gmail.com
+EMAIL_PORT=465
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASSWORD=your-app-password
+EMAIL_FROM=your-email@gmail.com
+EMAIL_TO=destination-email@example.com
+```
+
+次に、フォーム送信処理を以下のように修正：
+
+```typescript
+// app/contact/page.tsx 内のonSubmit関数を修正
+
+const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  setIsSubmitting(true);
+  setSubmitError(null);
+
+  try {
+    const response = await fetch('/api/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error || '送信に失敗しました');
+    }
+    
+    setIsSubmitted(true);
+    reset();
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    setSubmitError("送信中にエラーが発生しました。後でもう一度お試しください。");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+```
+
+#### 2. フォームサービスを利用する方法（最も簡単）
+
+[Formspree](https://formspree.io/)や[FormSubmit](https://formsubmit.co/)などのサービスを使用する：
+
+```typescript
+// app/contact/page.tsx 内のonSubmit関数を修正
+
+const onSubmit: SubmitHandler<FormValues> = async (data) => {
+  setIsSubmitting(true);
+  setSubmitError(null);
+
+  try {
+    // Formspreeの場合
+    const response = await fetch('https://formspree.io/f/あなたのフォームID', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    
+    if (!response.ok) {
+      throw new Error('送信に失敗しました');
+    }
+    
+    setIsSubmitted(true);
+    reset();
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    setSubmitError("送信中にエラーが発生しました。後でもう一度お試しください。");
+  } finally {
+    setIsSubmitting(false);
+  }
+};
+```
+
+#### 3. データベースと連携する方法
+
+お問い合わせデータを保存し、管理画面から確認できるようにする場合：
+
+- [Supabase](https://supabase.com/)、[Firebase](https://firebase.google.com/)、[MongoDB Atlas](https://www.mongodb.com/cloud/atlas)などのサービスと連携
+- データベースアクセス用のAPIルートを作成
+- 管理画面を実装（または既存の管理パネルを使用）
+
 ## 🚀 始め方
 
 ### 前提条件
@@ -105,6 +262,7 @@ vercel
 - 自分の強みやユニークなスキルを強調するようにコンテンツをカスタマイズしましょう
 - OGP設定を適切に行い、ソーシャルメディアでの共有時の表示を最適化しましょう
 - Google Analyticsの設定を行い、ポートフォリオサイトのアクセス解析を行いましょう
+- **問い合わせフォーム**: 実際の環境で使用する前に、上記の「コンタクトフォームの実用化方法」セクションを参考に実装を完了させましょう。
 
 ## 📄 ライセンス
 
