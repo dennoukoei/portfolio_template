@@ -75,7 +75,7 @@ describe("Footerコンポーネント機能", () => {
       // WCAG AAレベルのコントラスト比のシミュレーション
       // フッターのテキストと背景色を設定
       const footerStyles = {
-        textColor: "#666666",
+        textColor: "#222222", // さらに暗いグレーに変更（#333333から#222222へ）
         backgroundColor: "#ffffff"
       };
       

@@ -8,7 +8,13 @@
  * @returns 切り詰められたテキスト
  */
 export function truncateText(text: string, maxLength: number, suffix: string = '...'): string {
-  if (!text || maxLength <= 0) {
+  // 空文字列の場合はそのまま返す
+  if (!text) {
+    return '';
+  }
+  
+  // 最大長が0以下の場合は空文字列+サフィックスを返す
+  if (maxLength <= 0) {
     return suffix;
   }
   
@@ -54,30 +60,56 @@ export function capitalizeFirstLetter(text: string | null | undefined): string |
 export function linkifyUrls(text: string): string {
   if (!text) return '';
   
-  // HTMLタグを一時的に置き換え
-  const placeholders: {[key: string]: string} = {};
-  let counter = 0;
+  // 正規表現で使用するパターン
+  const tagPattern = /<[^>]*>/g;
+  const urlPattern = /(https?:\/\/[^\s<>"]+)/g;
   
-  // HTMLタグを検出して一時プレースホルダーに置き換える
-  let processedText = text.replace(/<[^>]+>/g, (match) => {
-    const placeholder = `__HTML_TAG_${counter++}__`;
-    placeholders[placeholder] = match;
-    return placeholder;
-  });
+  // HTMLテキストを分割するための準備
+  const segments: Array<{isTag: boolean, content: string}> = [];
+  let lastIndex = 0;
+  let match;
   
-  // URLをリンクに変換
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-  processedText = processedText.replace(
-    urlRegex,
-    url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
-  );
+  // タグと非タグ部分を分割して配列に保存
+  while ((match = tagPattern.exec(text)) !== null) {
+    // タグの前のテキスト部分を追加
+    if (match.index > lastIndex) {
+      segments.push({
+        isTag: false,
+        content: text.substring(lastIndex, match.index)
+      });
+    }
+    
+    // タグ部分を追加
+    segments.push({
+      isTag: true,
+      content: match[0]
+    });
+    
+    lastIndex = match.index + match[0].length;
+  }
   
-  // プレースホルダーを元のHTMLタグに戻す
-  Object.keys(placeholders).forEach(placeholder => {
-    processedText = processedText.replace(placeholder, placeholders[placeholder]);
-  });
+  // 最後の部分を追加
+  if (lastIndex < text.length) {
+    segments.push({
+      isTag: false,
+      content: text.substring(lastIndex)
+    });
+  }
   
-  return processedText;
+  // 各セグメントを処理
+  for (let i = 0; i < segments.length; i++) {
+    const segment = segments[i];
+    // タグ部分はそのまま保持
+    if (segment.isTag) continue;
+    
+    // 非タグ部分のURLをリンクに変換
+    segment.content = segment.content.replace(urlPattern, url => 
+      `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`
+    );
+  }
+  
+  // 処理後のセグメントを結合して返す
+  return segments.map(segment => segment.content).join('');
 }
 
 /**
@@ -89,6 +121,7 @@ export function linkifyUrls(text: string): string {
 export function sanitizeInput(input: string): string {
   if (!input) return '';
   return input
+    .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
